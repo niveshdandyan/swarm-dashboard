@@ -1,0 +1,57 @@
+{
+  "swarm_name": "My Project Swarm",
+  "start_time": "2024-01-01T00:00:00Z",
+  "swarm_dir": "/workspace/my-project",
+  "task_dir": "/tmp/claude-tasks",
+  "dashboard": {
+    "port": 8080,
+    "refresh_interval": 5000,
+    "auto_open_browser": false
+  },
+  "agents": {
+    "agent-1-core": {
+      "role": "Core Architect",
+      "wave": 1,
+      "task_id": null,
+      "mission": "Set up project structure and core dependencies",
+      "status": "pending",
+      "progress": 0,
+      "files_created": [],
+      "started_at": null,
+      "completed_at": null
+    },
+    "agent-2-backend": {
+      "role": "Backend Developer",
+      "wave": 2,
+      "task_id": null,
+      "mission": "Build REST API endpoints with proper validation",
+      "status": "pending",
+      "progress": 0,
+      "files_created": [],
+      "started_at": null,
+      "completed_at": null
+    },
+    "agent-3-frontend": {
+      "role": "Frontend Developer",
+      "wave": 2,
+      "task_id": null,
+      "mission": "Create React components and state management",
+      "status": "pending",
+      "progress": 0,
+      "files_created": [],
+      "started_at": null,
+      "completed_at": null
+    },
+    "agent-4-integration": {
+      "role": "Integration Lead",
+      "wave": 3,
+      "task_id": null,
+      "mission": "Combine outputs, run tests, and verify functionality",
+      "status": "pending",
+      "progress": 0,
+      "files_created": [],
+      "started_at": null,
+      "completed_at": null
+    }
+  }
+}
