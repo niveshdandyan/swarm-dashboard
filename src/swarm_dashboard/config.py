@@ -13,7 +13,6 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-
 # Default configuration values
 DEFAULT_PORT = 8080
 DEFAULT_SWARM_DIR = "/workspace/project"
@@ -122,7 +121,7 @@ class Config:
     @classmethod
     def from_file(cls, config_path: str) -> Config:
         """Load configuration from a JSON file."""
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             data = json.load(f)
         return cls.from_dict(data)
 

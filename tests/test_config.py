@@ -1,9 +1,6 @@
 """Tests for configuration module."""
 
-import json
 import os
-
-import pytest
 
 from swarm_dashboard.config import AgentConfig, Config
 

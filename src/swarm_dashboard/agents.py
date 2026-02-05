@@ -16,8 +16,8 @@ from typing import Any, Dict, List, Optional
 
 from swarm_dashboard.config import (
     COMPLETION_THRESHOLD_SECONDS,
-    Config,
     IDLE_THRESHOLD_SECONDS,
+    Config,
 )
 from swarm_dashboard.parser import (
     format_time_ago,
@@ -91,7 +91,7 @@ class AgentStatusManager:
                 pending += 1
 
         total = len(agents_status)
-        overall_progress = int((completed / total * 100)) if total > 0 else 0
+        overall_progress = int(completed / total * 100) if total > 0 else 0
 
         return {
             "swarm_name": config.swarm_name,

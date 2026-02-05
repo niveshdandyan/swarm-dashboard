@@ -68,7 +68,7 @@ class FilePositionTracker:
                 return None
 
             # Read new content
-            with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
+            with open(filepath, encoding="utf-8", errors="ignore") as f:
                 f.seek(last_pos)
                 content = f.read()
                 new_pos = f.tell()

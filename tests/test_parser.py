@@ -1,8 +1,6 @@
 """Tests for parser module."""
 
-import json
 
-import pytest
 
 from swarm_dashboard.parser import (
     extract_files_created,

@@ -18,7 +18,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from swarm_dashboard.config import Config, AgentConfig
+from swarm_dashboard.config import AgentConfig, Config
 
 # Port configuration
 DEFAULT_PORT = 8080
@@ -199,7 +199,7 @@ def update_agent_task_id(
     """
     config_path = os.path.join(swarm_dir, "swarm-config.json")
 
-    with open(config_path, "r") as f:
+    with open(config_path) as f:
         config = json.load(f)
 
     if agent_id in config.get("agents", {}):
@@ -221,7 +221,7 @@ def update_agent_task_id(
             swarm_dir, agent_id, task_id, task_dir or config.get("task_dir")
         )
         if symlink_path:
-            with open(config_path, "r") as f:
+            with open(config_path) as f:
                 config = json.load(f)
             if agent_id in config.get("agents", {}):
                 config["agents"][agent_id]["output_symlink"] = symlink_path
@@ -339,7 +339,7 @@ def stop_dashboard(swarm_dir: str) -> bool:
         return False
 
     try:
-        with open(pid_path, "r") as f:
+        with open(pid_path) as f:
             pid = int(f.read().strip())
 
         os.kill(pid, 15)  # SIGTERM

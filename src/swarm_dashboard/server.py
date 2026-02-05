@@ -157,7 +157,8 @@ class DashboardServer:
     def server_address(self) -> tuple[str, int]:
         """Get the server address."""
         if self._server:
-            return self._server.server_address
+            addr = self._server.server_address
+            return (str(addr[0]), int(addr[1]))
         return ("0.0.0.0", self.config.port)
 
 

@@ -2,8 +2,6 @@
 
 import os
 
-import pytest
-
 from swarm_dashboard.launcher import (
     create_agent_output_symlink,
     find_task_output_file,

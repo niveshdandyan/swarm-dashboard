@@ -78,6 +78,8 @@ packages = ["src/swarm_dashboard"]
 [tool.ruff]
 target-version = "py38"
 line-length = 100
+
+[tool.ruff.lint]
 select = [
     "E",      # pycodestyle errors
     "W",      # pycodestyle warnings
@@ -85,7 +87,6 @@ select = [
     "I",      # isort
     "B",      # flake8-bugbear
     "C4",     # flake8-comprehensions
-    "UP",     # pyupgrade
     "ARG",    # flake8-unused-arguments
     "SIM",    # flake8-simplify
 ]
@@ -93,13 +94,16 @@ ignore = [
     "E501",   # line too long (handled by formatter)
     "B008",   # function call in default argument
     "C901",   # too complex
+    "ARG001", # unused function argument (common in fixtures)
+    "SIM108", # use ternary (reduces readability)
+    "SIM118", # use key in dict instead of keys()
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["swarm_dashboard"]
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.9"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true

@@ -92,7 +92,7 @@ def cmd_status(args: argparse.Namespace) -> int:
         return 1
 
     try:
-        with open(pid_path, "r") as f:
+        with open(pid_path) as f:
             pid = int(f.read().strip())
 
         # Check if process exists
@@ -211,7 +211,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         args.verbose = getattr(args, "verbose", False)
         return cmd_serve(args)
 
-    return args.func(args)
+    result: int = args.func(args)
+    return result
 
 
 if __name__ == "__main__":

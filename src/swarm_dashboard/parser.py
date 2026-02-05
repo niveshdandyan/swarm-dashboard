@@ -188,15 +188,19 @@ def extract_files_created(
             msg = event["message"]
             if "content" in msg and isinstance(msg["content"], list):
                 for item in msg["content"]:
-                    if isinstance(item, dict) and item.get("type") == "tool_use":
-                        if item.get("name") in ("Write", "Edit", "NotebookEdit"):
-                            input_data = item.get("input", {})
-                            if isinstance(input_data, dict):
-                                filepath = input_data.get(
-                                    "file_path"
-                                ) or input_data.get("notebook_path")
-                                if filepath:
-                                    files.add(filepath)
+                    is_write_tool = (
+                        isinstance(item, dict)
+                        and item.get("type") == "tool_use"
+                        and item.get("name") in ("Write", "Edit", "NotebookEdit")
+                    )
+                    if is_write_tool:
+                        input_data = item.get("input", {})
+                        if isinstance(input_data, dict):
+                            filepath = input_data.get(
+                                "file_path"
+                            ) or input_data.get("notebook_path")
+                            if filepath:
+                                files.add(filepath)
 
     return list(files)[:max_files]
 
@@ -243,7 +247,7 @@ def parse_agent_output(
                 return cached
 
         # Read file content
-        with open(output_file, "r", encoding="utf-8", errors="ignore") as f:
+        with open(output_file, encoding="utf-8", errors="ignore") as f:
             content = f.read()
 
         if not content:
@@ -295,8 +299,9 @@ def read_json_file(filepath: str) -> Optional[Dict[str, Any]]:
         Parsed JSON content or None if read fails.
     """
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            return json.load(f)
+        with open(filepath, encoding="utf-8") as f:
+            data: Dict[str, Any] = json.load(f)
+            return data
     except Exception:
         return None
 

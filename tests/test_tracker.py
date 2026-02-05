@@ -3,8 +3,6 @@
 import os
 import time
 
-import pytest
-
 from swarm_dashboard.tracker import BoundedParseCache, FilePositionTracker
 
 
